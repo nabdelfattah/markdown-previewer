@@ -9,20 +9,24 @@ export default function Doc() {
       <ul className="tokensList">
         {data.map((obj) => {
           return (
-            <li>
+            <li key={JSON.stringify(obj)}>
               <article className="token">
                 <h3 className="name">{obj.name}</h3>
                 <p className="description">{obj.description}</p>
                 <p className="example">Example:</p>
                 <table className="table">
-                  <tr>
-                    <th>Markdown</th>
-                    <th>html</th>
-                  </tr>
-                  <tr>
-                    <td>{obj.examples[0].markdown}</td>
-                    <td>{obj.examples[0].html}</td>
-                  </tr>
+                  <thead>
+                    <tr>
+                      <th>Markdown</th>
+                      <th>html</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{obj.examples[0].markdown}</td>
+                      <td>{obj.examples[0].html}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </article>
             </li>

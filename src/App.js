@@ -12,20 +12,17 @@ const App = () => {
   const [hidePreview, setHidePreview] = useState(true)
   
   const openMD = () => {
-    console.log("open markdown")
     setHideCode(false)
     setHidePreview(true)
   }
   
   const openPreview = () => {
-    console.log('open html')
     setHideCode(true)
     setHidePreview(false)
     setCompiled(marked.parse(code))
   }
   
   const openDoc = () => {
-    console.log('open doc')
     setHideCode(true)
     setHidePreview(true)
   }
@@ -38,12 +35,12 @@ const App = () => {
   let content = '';
   if(hidePreview){
     if(hideCode){
-      content = <div><Doc/></div>
+      content = <Doc/>
     } else {
       content = <div><textarea name='markdown' onChange={handleChange} value={code}/></div>
     }
   } else {
-    content = <div><textarea name='html' value={compiled}/></div>
+    content = <div><textarea name='html' onChange={()=>{}} value={compiled}/></div>
   }
   
   return (

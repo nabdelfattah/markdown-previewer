@@ -131,3 +131,19 @@ th {
   padding: 10px;
   border: 1px solid #6a6868;
 }
+
+@media (max-width: 47em) {
+  .doc {
+    padding: 10px;
+  }
+  td {
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 47em) {
+  .btns {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+}
