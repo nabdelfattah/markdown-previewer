@@ -1,28 +1,34 @@
-import React, { useEffect } from "react";
-
-async function fetchDocs() {
-  try {
-    const response = await fetch(
-      "https://www.markdownguide.org/api/v1/basic-syntax.json"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching documents:", error);
-    throw error; // Re-throw the error to be caught in the calling function
-  }
-}
+import React from "react";
+import doc from "./data.json";
 
 export default function Doc() {
-  useEffect(() => {
-    fetchDocs();
-  }, []);
+  const data = doc.basic_syntax;
+
   return (
-    <div>
-      <p>hello Doc</p>
+    <div className="doc">
+      <ul className="tokensList">
+        {data.map((obj) => {
+          return (
+            <li>
+              <article className="token">
+                <h3 className="name">{obj.name}</h3>
+                <p className="description">{obj.description}</p>
+                <p className="example">Example:</p>
+                <table className="table">
+                  <tr>
+                    <th>Markdown</th>
+                    <th>html</th>
+                  </tr>
+                  <tr>
+                    <td>{obj.examples[0].markdown}</td>
+                    <td>{obj.examples[0].html}</td>
+                  </tr>
+                </table>
+              </article>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
